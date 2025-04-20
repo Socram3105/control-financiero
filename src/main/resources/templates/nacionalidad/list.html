@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nacionalidades</title>
+    <link rel="stylesheet" href="/resources/css/sb-admin-2.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Nacionalidades</h1>
+	<div class="mb-3">
+	    <a class="btn btn-primary" th:href="@{/nacionalidades}">Nueva Nacionalidad</a>
+	    <a class="btn btn-info" th:href="@{/}" style="margin-left: 10px;">Volver al Menú</a>
+	</div>
+    <table class="table table-bordered">
+        <thead class="thead-light">
+        <tr>
+            <th>ID</th>
+            <th>Descripción</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="n : ${nacionalidades}">
+            <td th:text="${n.id}"></td>
+            <td th:text="${n.descripcion}"></td>
+            <td>
+                <a th:href="@{/nacionalidades/editar/{id}(id=${n.id})}" class="btn btn-warning btn-sm">Editar</a>
+                <a th:href="@{/nacionalidades/eliminar/{id}(id=${n.id})}" class="btn btn-danger btn-sm">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
